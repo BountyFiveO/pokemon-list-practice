@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+![Pokemon Example](./example.gif)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+For this practice problem, we want you to display a list of Pokemon and their stats.
 
-## Available Scripts
+# Requirements:
 
-In the project directory, you can run:
+- Pokemon load from https://pokeapi.co/api/v2/pokemon and are listed on the page
+- The page displays the name of the Pokemon and its API URL
+- When a URL is clicked, the Pokemon’s stats are fetched from `https://pokeapi.co/api/v2/pokemon/${name}`
+- The page displays the stat name and base stat for all stats below its Pokemon
 
-### `npm start`
+# Tips:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## The list of Pokemon has this structure:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```json
+{
+	count: 1154
+	next:"https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20"
+	previous:null
+	results: [
+		{
+			name:"bulbasaur"
+			url:"https://pokeapi.co/api/v2/pokemon/1/"
+		},
+		{
+			name:"ivysaur"
+			url:"https://pokeapi.co/api/v2/pokemon/2/"
+		},
+		etc…
+	]
+}
+```
 
-### `npm test`
+Pokemon should be listed on the page with their name and URL.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+There will only be 20 Pokemon listed.
 
-### `npm run build`
+Each Pokemon has 6 stats.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Individual Pokemon have this structure:
+(unnecessary items were shortened)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```json
+{
+    abilities: [],
+    base_experience: 64,
+    forms: [],
+    game_indices: [],
+    height: 7,
+    held_items: [],
+    id: 1,
+    is_default: true,
+    location_area_encounters: "",
+    moves: [],
+    name: "bulbasaur" ,
+    order: 1,
+    past_types: [],
+    species: {},
+    sprites: {},
+    stats: [
+        {
+            base_stat: 45,
+            effort: 0,
+            stat: {
+                name: "hp",
+                url: "https://pokeapi.co/api/v2/stat/1/"
+            }
+        },
+        {
+            base_stat: 49,
+            effort: 0,
+            stat: {
+                name: "attack",
+                url: "https://pokeapi.co/api/v2/stat/2/"
+            }
+        },
+        etc…
+    ],
+    types: [],
+    weight: 69
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A Pokemon’s stats should only show after the Pokemon’s API URL has been clicked.
 
-### `npm run eject`
+All information can be displayed on the same page.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+It’s not necessary to use an AbortController.
