@@ -13,7 +13,7 @@ For this practice problem, we want you to display a list of Pokemon and their st
 
 ## The list of Pokemon has this structure:
 
-```json
+```
 {
 	count: 1154
 	next:"https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20"
@@ -41,7 +41,7 @@ Each Pokemon has 6 stats.
 ## Individual Pokemon have this structure:
 (unnecessary items were shortened)
 
-```json
+```
 {
     abilities: [],
     base_experience: 64,
